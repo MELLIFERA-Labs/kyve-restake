@@ -1,0 +1,72 @@
+extends layout
+block content
+  article.inform-article
+    div.icon
+      img(src=`${validatorImageURL}`, style='width: 150px; height: 150px; border-radius: 50%; margin: 50px' alt="Validator image")
+      div(style='display: flex; flex-direction: column; flex: 1; justify-content: flex-end;')
+        p.no-margin <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg> indentity: #{validatorMetadata.identity}
+        p.no-margin <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg> website: #{validatorMetadata.website}
+        p.no-margin <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg> contact: #{validatorMetadata.security_contact}
+        p.no-margin <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 64C28.7 64 0 92.7 0 128v64c0 8.8 7.4 15.7 15.7 18.6C34.5 217.1 48 235 48 256s-13.5 38.9-32.3 45.4C7.4 304.3 0 311.2 0 320v64c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V320c0-8.8-7.4-15.7-15.7-18.6C541.5 294.9 528 277 528 256s13.5-38.9 32.3-45.4c8.3-2.9 15.7-9.8 15.7-18.6V128c0-35.3-28.7-64-64-64H64zm64 112l0 160c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H144c-8.8 0-16 7.2-16 16zM96 160c0-17.7 14.3-32 32-32H448c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32V160z"/></svg> commission: #{commission} % 
+    div(style='border-right: 1px solid white; margin-right: 16px; margin-left: 16px')
+    div(style='display: flex; flex-direction: column; flex: 1')
+      div.header-validator
+        div(style='flex: 1;')
+          h2 #{validatorMetadata.moniker}
+          a(href=`https://app.kyve.network/#/validators/${validatorAddress}` role="button" class="outline" style='margin: 0; width: 60%;') Full profile
+        div(style='display: flex; flex: 1; flex-direction: column; justify-content: flex-end;')
+          p(style="margin: 0; margin-top: 5px")  Restake every: #{restakeEvery}
+          p(style="margin: 0; margin-top: 5px")  Last restake:  #{lastRestake}
+      div(style='border-bottom: 1px solid white; margin-top: 16px; margin-bottom: 16px')
+      div(style='display: flex; flex: 1; justify-content: space-between; align-items: center;')
+        div.col-2
+          p Total stake $KYVE
+          p.no-margin #{total_delegation} 
+        div.col-2
+          p Self stake $KYVE
+          p.no-margin #{self_delegation} 
+        div.col-2
+          p Delegators count
+          p.no-margin #{delegator_count}
+      div(style='border-bottom: 1px solid white; margin-top: 16px; margin-bottom: 16px')
+      div(style='display: flex; flex: 1; justify-content: space-between;')
+        div.col-2
+          p My restake
+          div.no-margin(x-data) 
+            em(x-show='$store.wallet.restakeData.isAlive === null' x-transition data-tooltip='Please, connect wallet'): <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+            span(x-data
+             x-show="$store.wallet.restakeData.isAlive !== null"
+             x-transition:enter.duration.500ms
+             x-transition:leave.duration.400ms)
+              span(
+              :style="{ color: $store.wallet.restakeData.isAlive ? 'var(--ins-color)': null }"
+              style="font-weight: bold;"
+              x-text='$store.wallet.client ? $store.wallet.restakeData.isAlive ? "Enabled" : "Disabled" : ""') &nbsp;
+              span(
+                x-text="$store.wallet.restakeExpireAfter().message ?? ''" 
+                :style="{color: $store.wallet.restakeExpireAfter().type === 'warning' ? 'var(--mark-background-color)' : 'var(--ins-color)'}") 
+        div.col-2
+          p My Balance $KYVE
+          p.no-margin(x-data) 
+            em( 
+            x-show='!$store.wallet.balance' 
+            x-transition
+            data-tooltip='Please, connect wallet'): <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+            span(
+               style="font-weight: bold;"
+               x-show='$store.wallet.balance' 
+               x-transition:enter.duration.500ms
+               x-transition:leave.duration.400ms
+               x-text="$store.wallet.client ? formatNumber(toHumamReadable($store.wallet.balance)) : ''") &nbsp;
+        div.col-2
+          p My delegation $KYVE
+          p.no-margin(x-data) 
+            em(x-show='$store.wallet.delegated === null' x-transition data-tooltip='Please, connect wallet'): <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+            span(
+            style="font-weight: bold;"
+            x-show="$store.wallet.delegated !== null"
+            x-transition:enter.duration.500ms
+            x-transition:leave.duration.400ms
+            x-text='$store.wallet.client ? formatNumber(toHumamReadable($store.wallet.delegated)) : ""') &nbsp;
+  block action
+

@@ -1,0 +1,17 @@
+extends main
+block content
+  article(class='slide-it')
+    h2 How KYVE RESTAKE works
+    p KYVE RESTAKE makes use of a feature in Cosmos blockchains called Authz. This allows a validator (or any other wallet) to send certain pre-authorized transactions on your behalf.
+    p When you enable KYVE RESTAKE you authorize the validator to send Delegate messages for their own validator address. We cannot #[strong spent your funds] only delegate. Authorisation expires automatically after your selected date and you can revoke at any time
+    p #[strong Kyve restake works only for protocol nodes]
+    h3 How to use KYVE RESTAKE
+    ol 
+      li Connect your wallet
+      li You need delegate more then 0 $KYVE to the our validator. (You don't need to do this if you already delegated to us)
+      li Select the date when you want to disable restake
+      li Click on "Enable restake"
+      li Relax and we will auto-comound your rewards for you 🙂
+    a(href='/delegate'): button(class="primary outline" data-loading-disable data-loading-aria-busy data-loading-delay="500") Delegate to us
+    a(href='/restake'): button(class="primary outline" data-loading-disable data-loading-aria-busy data-loading-delay="500") Enable Restake
+

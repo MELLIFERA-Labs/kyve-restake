@@ -1,0 +1,39 @@
+article(x-data="restake"  class='slide-it')
+  h2 Manage restake in #{validatorMetadata.moniker}
+  form
+    label(for="date") Expiry date for restake
+    input(x-model='date' type="date" id="date" name="date" required)
+    small(x-text='validateDate(date) || "All is correct!"') Please select a date
+    div.grid 
+      button(
+      role="button"
+      class="secondary" hx-get='/' id='back' hx-swap="outerHTML transition:true" hx-target='closest article' hx-push-url="true") Back 
+      button(
+      :aria-busy="busyRevoke"
+      :disabled="!$store.wallet.restakeData.isAlive ? true : (busyRestake || busyRevoke)"
+      role="button" 
+      class="outline" 
+      style="border-color: red; color: red" 
+      :data-tooltip="$store.wallet.restakeData.isAlive ? null : 'Restake doesn\\'t enabled for this validator'" 
+      @click.prevent=`await revokeRestake("${grantAddress}")` ) Disable restake
+      button(
+      id='delegate'
+      role="button" 
+      :aria-busy="busyRestake"
+      hx-swap="outerHTML transition:true" 
+      hx-target='closest article' 
+      hx-push-url="true"
+      hx-get='/delegate') Delegate 
+      button(
+      role="button" 
+      :aria-busy="busyRestake"
+      @click.prevent=`await saveRestake("${grantAddress}")` 
+      :disabled="busyRevoke || ($store.wallet.client?.account?.address && validateDate(date))" 
+      :data-tooltip="restakeToolTip()" x-text="$store.wallet.restakeData.isAlive ? 'Update' : 'Create' ") Create
+  details 
+    summary How KYVE RESTAKE works
+    p Enabling restake will authorize the #{validatorMetadata.moniker} validator to send Delegate transactions on your behalf for your selected date using Authz. We will #[strong only] be authorized to #[strong delegate]. You can revoke the authorization at any time. 
+    p #[strong Will pay the transaction fees for you].   
+    a(href='/how-kyve-restake-works'): button(class="secondary outline" href='/how-kyve-restake-works') More info how KYVE RESTAKE works
+
+   

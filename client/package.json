@@ -1,0 +1,39 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "source": "./src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel watch",
+    "build": "parcel build"
+  },
+  "targets": {
+    "default": {
+      "distDir": "../app/server/assets/build",
+      "optimize": true,
+      "includeNodeModules": true
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kyvejs/sdk": "^1.0.1",
+    "@kyvejs/types": "^1.0.1",
+    "alpinejs": "^3.12.3",
+    "bignumber.js": "^9.1.1",
+    "cosmjs-types": "^0.8.0",
+    "luxon": "^3.3.0"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@parcel/compressor-brotli": "^2.9.3",
+    "@parcel/compressor-gzip": "^2.9.3",
+    "@parcel/reporter-bundle-buddy": "^2.9.3",
+    "crypto-browserify": "^3.12.0",
+    "events": "^3.3.0",
+    "parcel": "^2.9.3",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  }
+}

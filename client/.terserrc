@@ -1,0 +1,7 @@
+{
+   "compress": {
+        "unused": true,
+        "dead_code": true
+      },
+      "mangle": true
+}
