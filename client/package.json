@@ -17,7 +17,6 @@
     }
   },
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "@kyvejs/sdk": "^1.0.1",
     "@kyvejs/types": "^1.0.1",
