@@ -17,7 +17,10 @@ GRANT_MNEMONIC=menemonic seed phrase with minimal funds for fee payment. This wa
 VALIDATOR_ADDRESS=kyve1dsk7wfy6n2ylwj8x2el6txgsyff8av6wa5yl28
 #Setup image url for your validator address
 VALIDATOR_IMAGE_URL=https://s3.amazonaws.com/keybase_processed_uploads/e86fec4890dc435ba14cb684ab658e05_360_360.jpg
-
+# CRON job for automatically restaking tokens
+RESTAKE_BY_CRON='0 */4 * * *'
+# Human-readable CRON job for automatically restaking tokens
+HUMAN_READABLE_RESTAKE_BY_CRON='4 hours'
 ```
 1. With Docker compose
 
