@@ -12,8 +12,7 @@ article(x-data="restake"  class='slide-it')
       :aria-busy="busyRevoke"
       :disabled="!$store.wallet.restakeData.isAlive ? true : (busyRestake || busyRevoke)"
       role="button" 
-      class="outline" 
-      style="border-color: red; color: red" 
+      class="outline restake-button" 
       :data-tooltip="$store.wallet.restakeData.isAlive ? null : 'Restake doesn\\'t enabled for this validator'" 
       @click.prevent=`await revokeRestake("${grantAddress}")` ) Disable restake
       button(

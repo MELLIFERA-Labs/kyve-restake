@@ -2,17 +2,16 @@ article( x-data=`delegation('${validatorAddress}')`  class='slide-it')
   form
     h2 Delegate to #{validatorMetadata.moniker}
     label(for="delegate") Amount to delegate $KYVE
-    div(style="display: flex; jastify-content: space-between;")
-      input(x-model.number='amount' id="delegate" name="delegate" style="margin: 0; width: 70%" type='number')
+    div.header-validator
+      input(x-model.number='amount' id="delegate" name="delegate" style='margin:0; width: 70%' type='number')
       button(
        role="button"
       :disabled="$store.wallet.client ? false : true" 
       :data-tooltip="$store.wallet.client ? null : 'Need to connect wallet'"
-      style="width: 30%; margin: 0; margin-left: 3px"
-      class="secondary outline" 
+      class="secondary outline delegate-max-button" 
       @click.prevent="amount = toHumamReadable($store.wallet.balance)") Max
     small(x-text="'You will delegate: '+ formatNumber(amount)") You will delegate
-    div(style="margin-top: 10px").grid 
+    div.button-container.grid 
       button(class="secondary" hx-get='/' id='back' hx-swap="outerHTML transition:true" hx-target='closest article' hx-push-url="true" ) Back 
       button(
         @click.prevent="await delegate(amount)"
