@@ -118,6 +118,121 @@ a:has(h1) {
   align-items: center;
 }
 
+img {
+  width: 150px;
+  height: 150px; 
+  border-radius: 50%; 
+  margin: 50px
+}
+
+.contact-icon {
+  display: flex; 
+  flex-direction: column; 
+  flex: 1; 
+  justify-content: flex-end;
+}
+
+.vertical-line {
+  border-right: 1px solid white; 
+  margin-right: 16px; 
+  margin-left: 16px
+}
+
+.horizontal-line {
+  border-bottom: 1px solid white; 
+  margin-top: 16px; 
+  margin-bottom: 16px
+}
+
+.restake-info {
+  display: flex; 
+  flex: 1; 
+  flex-direction: column; 
+  justify-content: flex-end;
+}
+
+.flex-columns {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.validator-info {
+  display: flex;
+  flex-direction: column; 
+  flex: 1
+}
+
+.time-info {
+  margin: 0;
+  margin-top: 5px
+}
+
+.profile-button {
+  margin: 0; 
+  width: 60%;
+}
+
+.footer-container {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-content {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-heading {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.error-message-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+
+.error-gif-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delegate-max-button {
+  width: 30%; 
+  margin: 0; 
+  margin-left: 3px
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.restake-button {
+  border-color: red; 
+  color: red
+}
+
+.bold-text { 
+  font-weight: bold;
+}
+
 .inform-article {
   display: flex;
   margin: 0;
