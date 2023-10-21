@@ -46,7 +46,11 @@ const restakeHandler = async () => {
 }
 
 (async () => {
-  await kyve.init(config.GRANT_MNEMONIC, config.KYVE_ENV)
+  await kyve.init(config.GRANT_MNEMONIC, {
+    chaindId: config.KYVE_ENV,
+    rpc: config.RPC,
+    rest: config.REST
+  })
   log.info(`Kyve SDK initialized with grantee: ${kyve.instance.kyveSdk.account.address} `)
   cosmosApi.init(kyve.instance.kyveSdk.config.rest)
   log.info('cosmos api initialized')

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server:dev": "NODE_ENV=development node --watch server/src/server.js",
-    "woker:dev": "NODE_ENV=development node --watch restake-worker/index.js",
+    "worker:dev": "NODE_ENV=development node --watch restake-worker/index.js",
     "cli": "node cli/index.js",
     "lint:fix": "eslint --fix .",
     "lint": "eslint ."
