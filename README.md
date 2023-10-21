@@ -21,6 +21,13 @@ VALIDATOR_IMAGE_URL=https://s3.amazonaws.com/keybase_processed_uploads/e86fec489
 RESTAKE_BY_CRON='0 */4 * * *'
 # Human-readable CRON job for automatically restaking tokens
 HUMAN_READABLE_RESTAKE_BY_CRON='4 hours'
+# KYVE_ENV (optinal) default is 'kyve-1'
+KYVE_ENV='kyve-1 '
+# RPC enpoint(optinal)
+RPC='https://rpc-eu-1.korellia.kyve.network'
+# API endpoint (optinal)
+REST='https://api-eu-1.korellia.kyve.network'
+# If no RPC or REST endpoint provided, service will use default endpoints from kyvejs/sdk bu
 ```
 1. With Docker compose
 

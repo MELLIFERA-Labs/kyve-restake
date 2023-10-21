@@ -21,6 +21,12 @@ const schema = {
       type: 'string',
       default: 'kyve-1'
     },
+    REST: {
+      type: 'string'
+    },
+    RPC: {
+      type: 'string'
+    },
     GRANT_MNEMONIC: {
       type: 'string'
     },
