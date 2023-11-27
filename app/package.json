@@ -14,7 +14,7 @@
   "author": "",
   "license": "APACHE-2.0",
   "dependencies": {
-    "@kyvejs/sdk": "^1.0.1",
+    "@kyvejs/sdk": "^1.1.0-rc1",
     "commander": "^11.0.0",
     "cron": "^2.3.1",
     "env-schema": "^5.2.0",

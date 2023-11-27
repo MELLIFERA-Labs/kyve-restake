@@ -4,6 +4,7 @@ const cosmosApi = require('../common/cosmos-api.factory')
 const config = require('../common/config')
 const logger = require('../common/logger')
 const log = logger('restake-worker')
+const BigNumber = require('bignumber.js')
 const CronJob = require('cron').CronJob
 
 const restakeHandler = async () => {
@@ -28,7 +29,7 @@ const restakeHandler = async () => {
             value: MsgDelegate.encode(MsgDelegate.fromPartial({
               creator: grant.granter,
               staker: config.VALIDATOR_ADDRESS,
-              amount: grant.accountAssets.protocol_rewards
+              amount: BigNumber(grant.accountAssets.delegation_rewards).gt(BigNumber(grant.accountAssets.balance)) ? grant.accountAssets.balance : grant.accountAssets.delegation_rewards
             })).finish()
           }
         ]
