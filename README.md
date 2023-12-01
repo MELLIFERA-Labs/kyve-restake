@@ -22,11 +22,11 @@ RESTAKE_BY_CRON='0 */4 * * *'
 # Human-readable CRON job for automatically restaking tokens
 HUMAN_READABLE_RESTAKE_BY_CRON='4 hours'
 # KYVE_ENV (optinal) default is 'kyve-1'
-KYVE_ENV='kyve-1 '
+KYVE_ENV='kyve-1'
 # RPC enpoint(optinal)
-RPC='https://rpc-eu-1.korellia.kyve.network'
+RPC='https://rpc-eu-1.kyve.network'
 # API endpoint (optinal)
-REST='https://api-eu-1.korellia.kyve.network'
+REST='https://api-eu-1.kyve.network'
 # If no RPC or REST endpoint provided, service will use default endpoints from kyvejs/sdk bu
 ```
 1. With Docker compose
