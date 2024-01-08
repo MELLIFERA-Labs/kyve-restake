@@ -18,7 +18,7 @@
   },
   "author": "",
   "dependencies": {
-    "@kyvejs/sdk": "^1.0.1",
+    "@kyvejs/sdk": "^1.1.0",
     "@kyvejs/types": "^1.0.1",
     "alpinejs": "^3.12.3",
     "bignumber.js": "^9.1.1",
