@@ -26,19 +26,21 @@ const restakeHandler = async () => {
         msgs: [
           {
             typeUrl: '/kyve.delegation.v1beta1.MsgDelegate',
-            value: MsgDelegate.encode(MsgDelegate.fromPartial({
-              creator: grant.granter,
-              staker: config.VALIDATOR_ADDRESS,
-              amount: BigNumber(grant.accountAssets.delegation_rewards).gt(BigNumber(grant.accountAssets.balance)) ? grant.accountAssets.balance : grant.accountAssets.delegation_rewards
-            })).finish()
+            value: grant?.accountAssets?.protocol_rewards !== '0'
+              ? MsgDelegate.encode(MsgDelegate.fromPartial({
+                creator: grant.granter,
+                staker: config.VALIDATOR_ADDRESS,
+                amount: BigNumber(grant.accountAssets.protocol_rewards).gt(BigNumber(grant.accountAssets.balance)) ? grant.accountAssets.balance : grant.accountAssets.protocol_rewards
+              })).finish()
+              : null
           }
         ]
       }
     }
-  })
+  }).filter((trx) => trx.value.msgs[0].value)
 
   const memo = `KYVE RESTAKE(MELLIFERA): VALIDATOR_ADDRESS: ${config.VALIDATOR_ADDRESS}`
-  if (grantsWithRewards.length) {
+  if (delegateTrxs.length) {
     const result = await kyve.instance.kyveSdk.nativeClient.signAndBroadcast(kyve.instance.kyveSdk.account.address, delegateTrxs, 'auto', memo)
     log.info('restake success', result)
   } else {
