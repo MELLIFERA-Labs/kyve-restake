@@ -26,7 +26,19 @@ html(lang="en" data-theme="dark")
                 a(href='/') 
                   h1 KYVE RESTAKE
                   span For protocol nodes
-          ul: li: button(x-transition x-data role="button" class="contrast outline" x-text='$store.wallet.text' @click=`$store.wallet.client ? $store.wallet.disconnect() : await $store.wallet.connect('${validatorAddress}')`) Connect Wallet
+          
+          ul: li
+              details(role="list")
+                summary(aria-haspopup="listbox" style="color: white; border-color: white;" x-data x-text='$store.wallet.text') Connect wallet
+                ul(role="listbox" x-data="{ open: true, showDisconnect: false }")
+                  li(x-show='open')
+                    a(x-transition x-data class="contrast outline" @click=`$store.wallet.client ? $store.wallet.disconnect() : await $store.wallet.connect('keplr', '${validatorAddress}'); open = false; showDisconnect = true`) Keplr 
+                  li(x-show='open')
+                    a(x-transition x-data class="contrast outline" @click=`$store.wallet.client ? $store.wallet.disconnect() : await $store.wallet.connect('leap', '${validatorAddress}'); open = false; showDisconnect = true`) Leap 
+                  li(x-show='open')
+                    a(x-transition x-data class="contrast outline" @click=`$store.wallet.client ? $store.wallet.disconnect() : await $store.wallet.connect('cosmostation', '${validatorAddress}'); open = false; showDisconnect = true`) Cosmostation
+                  li(x-show='showDisconnect')
+                    a(x-transition x-data class="contrast outline"  @click=`$store.wallet.disconnect(); showDisconnect = false; open = true`) Disconnect
       main
         block content
       footer.footer-container

@@ -15,7 +15,7 @@ const schema = {
     },
     PORT: {
       type: 'number',
-      default: 5000
+      default: 5001
     },
     KYVE_ENV: {
       type: 'string',
