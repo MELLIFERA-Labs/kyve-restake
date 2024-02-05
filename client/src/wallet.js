@@ -14,14 +14,21 @@ export default (dataValidator) => Alpine.store('wallet', {
       isAlive: null,
       expiration: null
     },
-    async connect(valAddress) {
-      
-      this.client = await sdk.fromKeplr()
-      this.apiClient = sdk.createLCDClient()
+    async connect(walletType, valAddress) {
+      if (walletType === 'keplr') {
+        this.client = await sdk.fromKeplr();
+      } else if (walletType === 'leap') {
+        this.client = await sdk.fromLeap();
+      } else if (walletType === 'cosmostation') {
+        this.client = await sdk.fromCosmostation()
+      }
+    
+      this.apiClient = sdk.createLCDClient();
 
-      localStorage.setItem("_connected", "true");
+      localStorage.setItem("_connected", walletType);
+      
       this.balance = await this.client.getKyveBalance();
-      this.text = formatAddress(this.client.account.address, 'test')
+      this.text = formatAddress(this.client.account.address)
       const response = await this.apiClient.kyve.query.v1beta1.stakersByDelegator({ delegator: this.client.account.address })
       const staker = response.stakers.find((st) => st.staker.address === valAddress)
       const cosmosAPI = cosmosApi(this.client.config.rest)
@@ -30,9 +37,10 @@ export default (dataValidator) => Alpine.store('wallet', {
       const result = await cosmosAPI.getPermissionsByGranterAndGrantee(this.client.account.address, dataValidator.dataset.grantAddress, '/kyve.delegation.v1beta1.MsgDelegate').catch(error => {
         return false;
       })
+      console.log(result.grants)
       this.restakeData = {
-        isAlive: result && result.grants[0] && new Date(result.grants[0].expiration).getTime() >= Date.now(),
-        expiration: result && result.grants[0] && result.grants[0].expiration,
+        isAlive: result?.grants ? new Date(result.grants[0].expiration).getTime() >= Date.now() : undefined,
+        expiration: result?.grants ? result.grants[0].expiration : undefined
       }
       sdk.onAccountChange(async () => {
         this.clearState()

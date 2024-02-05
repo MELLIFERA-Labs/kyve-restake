@@ -37,9 +37,10 @@ document.addEventListener("readystatechange", () => {
   delegationInit();
   restakeInit();
 
-  const isConnected = localStorage.getItem("_connected")
-  if (isConnected) {
-    Alpine.store('wallet').connect(dataValidator.dataset.validatorAddress)
+  const isConnectedType = localStorage.getItem("_connected")
+
+  if (isConnectedType) {
+    Alpine.store('wallet').connect(isConnectedType, dataValidator.dataset.validatorAddress)
   }
 
   Alpine.start()
